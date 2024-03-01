@@ -4,6 +4,7 @@
 
   <input type="text" name="nombre"[(ngModel)]="nombre"><br/>  <!-- banana in box, directiva ngModel para k lo que se introduzca en el cuadro de texto se almacene en nombre-->
   <input type="text" name="apellido" [(ngModel)]="apellido"><br/>
+  <input type="text" name="cargo" [(ngModel)]="cargo"><br/>
   <input type="submit" value="Registrar" (click)="registrarUsuario()"> <br/>
 
 </form>
@@ -16,7 +17,10 @@
 <!-- FUNCIONAMIENTO DE ELSE CON NG TEMPLATE,-->
 <!-- POR DEFECTO ELSE NO CARGA PERO SI LO ASOCIAS AL TEMPLETE SI-->
 
-<p *ngIf="registrado; else sinRegistrar "> {{mensaje}} con el nombre de {{nombre}} {{apellido}}</p>  <!-- EMPLEO DE DIRECTIVA NGIF EN HTML ES UN CONDICIONAL IF, SI REGISTRADO = TRUE, MUESTRAME EL MENSAJE-->
+<p *ngIf="registrado; else sinRegistrar "> {{mensaje}} con el nombre de {{nombre}} {{apellido}} <!-- EMPLEO DE DIRECTIVA NGIF EN HTML ES UN CONDICIONAL IF, SI REGISTRADO = TRUE, MUESTRAME EL MENSAJE-->
+   <!--y tiene el cargo de <span [ngStyle]="{color:cargo=='director' ? 'red':'black'} ">{{cargo}}</span></p>        uso de operador ternario mas NGstyle-->
+
+   y tiene el cargo de <span [ngClass]="{paraDirectores:cargo=='director'} ">{{cargo}}</span></p>  <!--ngClass permite usar hoja de estilos externa css para aplicar estilos a nuestra parte del codigo-->
 
 
 <ng-template #sinRegistrar>
